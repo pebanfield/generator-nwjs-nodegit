@@ -1,45 +1,70 @@
-# generator-generator-nwjs-nodegit [![Build Status](https://secure.travis-ci.org/pebanfield/generator-generator-nwjs-nodegit.png?branch=master)](https://travis-ci.org/pebanfield/generator-generator-nwjs-nodegit)
 
-> [Yeoman](http://yeoman.io) generator
+## Why nwjs-nodegit?
 
+This Yeoman generator covers the resources, steps and gotchas relating to running nodegit inside of nw.js. 
+The focus is on build dependencies and verification and not architectural structure.
 
-## Getting Started
+Note : This generator has only been tested on Mac OS. 
 
-### What is Yeoman?
+### Pre-requisites
 
-Trick question. It's not a thing. It's this guy:
+- [Node JS](https://nodejs.org/)
+- [nw.js](https://github.com/nwjs/nw.js/)(formerly node-webkit)
+- [nw-gyp](https://github.com/nwjs/nw.js/wiki/Build-native-modules-with-nw-gyp)
+- [xCode](https://developer.apple.com/xcode/downloads/) 
+- [xCode Command Line Tools](https://developer.apple.com/library/ios/documentation/DeveloperTools/Conceptual/WhatsNewXcode/Articles/xcode_4_3.html#//apple_ref/doc/uid/1006-SW2)
+- [Yeoman Tools](http://yeoman.io/learning/index.html)
 
-![](http://i.imgur.com/JHaAlBJ.png)
+### Quickstart Steps 
 
-Basically, he wears a top hat, lives in your computer, and waits for you to tell him what kind of application you wish to create.
-
-Not every new computer comes with a Yeoman pre-installed. He lives in the [npm](https://npmjs.org) package repository. You only have to ask for him once, then he packs up and moves into your hard drive. *Make sure you clean up, he likes new and shiny things.*
-
-```bash
-npm install -g yo
-```
-
-### Yeoman Generators
-
-Yeoman travels light. He didn't pack any generators when he moved in. You can think of a generator like a plug-in. You get to choose what type of application you wish to create, such as a Backbone application or even a Chrome extension.
-
-To install generator-generator-nwjs-nodegit from npm, run:
+Once you have installed the tools above - Try these terminal commands first and see the additional information/resources below if you get stuck.
 
 ```bash
-npm install -g generator-generator-nwjs-nodegit
+npm install -g nw-gyp
+npm install -g generator-nwjs-nodegit
+mkdir myTest && cd myTest && yo nwjs-nodegit
+gulp
+alias nw="/Applications/nwjs.app/Contents/MacOS/nwjs"
+nw nwapp
 ```
 
-Finally, initiate the generator:
+If this has worked correctly, you should see a webkit instance open. You should also see console log output showing
+git history from the sample repo included in the generator template.
 
-```bash
-yo generator nwjs nodegit
-```
+### Conceptual Overview
 
-### Getting To Know Yeoman
+This Yeoman project template is intended to facilitate setting up a [node-webkit](http://nwjs.io/)(nw.js) project
+build that includes the [nodegit](http://www.nodegit.org/) native library.
 
-Yeoman has a heart of gold. He's a person with feelings and opinions, but he's very easy to work with. If you think he's too opinionated, he can be easily convinced.
+The main difficulty arises from the fact that nodegit consists of node bindings to the native libgit2 component. This means that
+libgit2 must be compiled for the specific operating system and version of nw.js webkit being developed. This was not obvious to me
+intially since it is not usually necessary to perform this additional compilation step for node modules.
 
-If you'd like to get to know Yeoman better and meet some of his friends, [Grunt](http://gruntjs.com) and [Bower](http://bower.io), check out the complete [Getting Started Guide](https://github.com/yeoman/yeoman/wiki/Getting-Started).
+## Additional Resources
+
+All the information above was consolidated from the resources below.
+
+- [NW.JS](http://nwjs.io/)
+- [nw.js install](http://www.nodegit.org/guides/install/nw.js/)
+- [How to Run Apps](https://github.com/nwjs/nw.js/wiki/How-to-run-apps)
+- [nodegit](http://www.nodegit.org/)
+- [nw/gyp](https://github.com/nwjs/nw-gyp)
+- [Build with Gyp](https://github.com/nwjs/nw.js/wiki/Build-native-modules-with-nw-gyp)
+
+Also, the Yeoman template is based on [node-webkit-builder](https://github.com/mllrsohn/node-webkit-builder)
+
+### Common Errors 
+
+The most common error is -
+
+```Message:
+```    Module version mismatch. Expected 14, got 43.
+```Stack:
+```Error: Module version mismatch. Expected 14, got 43.
+
+This is error that arises when you are trying to run a version of libgit2 that is not
+compiled for your OS and version of webkit. This is the error I ran into and is probably why 
+you are here reading this. :)
 
 
 ## License
