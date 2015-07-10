@@ -13,7 +13,7 @@ function _getHistory(){
   var open = nodegit.Repository.open;
 
 // Open the repository directory.
-  return open("/Users/pebanfield/PROJECTS/change-view/change-viewer")
+  return open("test/gitdata")
     // Open the master branch.
     .then(function(repo) {
       return repo.getMasterCommit();

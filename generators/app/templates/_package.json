@@ -1,6 +1,16 @@
 {
   "name": "nwjs-nodegit",
   "version": "0.0.0",
+  "description": "description",
+  "repository": {
+    "type": "git",
+    "url": "repo"
+  },
+  "author": "name",
+  "license": "MIT",
+  "engines": {
+    "nw.js": "0.12.2"
+  },
   "dependencies": {
     "gulp": "^3.x",
     "node-webkit-builder": "^1.x"

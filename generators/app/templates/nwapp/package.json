@@ -2,6 +2,11 @@
   "name": "example",
   "version": "1.0.0",
   "description": "A nodegit example.",
+  "repository": {
+    "type": "git",
+    "url": "repo"
+  },
+  "author": "name",
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,7 +17,6 @@
     "nodegit": "^0.4.1"
   },
   "devDependencies": {
-    "gulp": "^3.9.0",
-    "gulp-mocha": "^2.1.2"
+    "gulp": "^3.9.0"
   }
 }
