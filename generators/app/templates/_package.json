@@ -1,0 +1,8 @@
+{
+  "name": "nwjs-nodegit",
+  "version": "0.0.0",
+  "dependencies": {
+    "gulp": "^3.x",
+    "node-webkit-builder": "^1.x"
+  }
+}
