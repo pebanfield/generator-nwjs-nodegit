@@ -1,6 +1,5 @@
 'use strict';
 var yeoman = require('yeoman-generator');
-var chalk = require('chalk');
 var yosay = require('yosay');
 
 module.exports = yeoman.generators.Base.extend({
@@ -18,20 +17,18 @@ module.exports = yeoman.generators.Base.extend({
 
     // Have Yeoman greet the user.
     this.log(yosay(
-      'Welcome to the shining ' + chalk.red('GeneratorNwjsNodegit') + ' generator!'
+      'Nodegit for nw.js Install'
     ));
 
     var prompts = [{
       type: 'confirm',
-      name: 'someOption',
-      message: 'Would you like to enable this option?',
+      name: 'generateOption',
+      message: 'Generate a nodegit for nw.js template?.',
       default: true
     }];
 
     this.prompt(prompts, function (props) {
       this.props = props;
-      // To access props later use this.props.someOption;
-
       done();
     }.bind(this));
   },
@@ -75,6 +72,8 @@ module.exports = yeoman.generators.Base.extend({
 
   install: function () {
 
+    //work around for node subdirectory
+    //https://github.com/yeoman/generator/issues/392
     this.on('end', function () {
       this.fs.copy(
         'node_modules/nodegit',
@@ -89,13 +88,6 @@ module.exports = yeoman.generators.Base.extend({
         this.destinationPath('nwapp/node_modules/bluebird')
       );
 
-
-      //todo - use move or delete to get rid of unnecessary dependencies
-      // this.fs.delete('node_modules/nodegit');
-      //delete or fs.move are causing overwrite warnings for some reason
-      //SBoudrias proposed solution does not work due to issues change directory
-      //context for node process
-      //https://github.com/yeoman/generator/issues/392
       this.installDependencies(function(){
         this.fs.delete('node_modules/nodegit');
       });
