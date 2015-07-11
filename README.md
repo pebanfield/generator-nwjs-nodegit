@@ -1,26 +1,34 @@
 
 ## Why nwjs-nodegit?
 
-This [Yeoman generator](http://yeoman.io/) covers the resources, steps and gotchas relating to running nodegit inside of nw.js. 
+This [Yeoman generator](http://yeoman.io/) aims to simplify the setup for running nodegit inside of nw.js. 
 The focus is on build dependencies and verification and not architectural structure.
 
+Despite all of the resources and elements involved the manual process is actually quite simple. 
+
+The engines configuration and nw.js version has to be correctly included in the package json before installing nodegit. Alternatively, you can 
+correct the configuration and either run nw-gwp manually or npm install to kick off the nodegit install.
+
+This generator 
 Note : This has only been tested on Mac OS. 
 
 ### Pre-requisites
 
 - [Node JS](https://nodejs.org/)
 - [nw.js](https://github.com/nwjs/nw.js/) (formerly node-webkit)
-- [nw-gyp](https://github.com/nwjs/nw.js/wiki/Build-native-modules-with-nw-gyp)
 - [xCode](https://developer.apple.com/xcode/downloads/) 
 - [xCode Command Line Tools](https://developer.apple.com/library/ios/documentation/DeveloperTools/Conceptual/WhatsNewXcode/Articles/xcode_4_3.html#//apple_ref/doc/uid/1006-SW2)
 - [Yeoman Tools](http://yeoman.io/learning/index.html)
 
+#### optional 
+  
+  - [nw-gyp](https://github.com/nwjs/nw.js/wiki/Build-native-modules-with-nw-gyp) (run by nodegit install)
+  
 ### Quickstart Steps 
 
 After you have installed the tools above - Try these terminal commands first and see the additional information/resources below if you get stuck.
 
 ```bash
-npm install -g nw-gyp
 npm install -g generator-nwjs-nodegit
 mkdir myTest && cd myTest && yo nwjs-nodegit
 alias nw="/Applications/nwjs.app/Contents/MacOS/nwjs"
