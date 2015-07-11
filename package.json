@@ -1,5 +1,5 @@
 {
-  "name": "generator-generator-nwjs-nodegit",
+  "name": "generator-nwjs-nodegit",
   "version": "0.0.0",
   "description": "Yeoman generator",
   "license": "MIT",
