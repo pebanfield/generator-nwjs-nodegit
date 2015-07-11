@@ -4,7 +4,8 @@
 This [Yeoman generator](http://yeoman.io/) aims to simplify the setup for running nodegit inside of nw.js. 
 The focus is on build dependencies and verification and not architectural structure.
 
-Despite all of the resources and elements involved the manual process is actually quite simple. 
+Despite all of the resources and elements involved the manual process is actually quite simple, but this generator may help to 
+prevent you from getting stuck.
 
 The engines configuration and nw.js version has to be correctly included in the package json before installing nodegit. Alternatively, you can 
 correct the configuration and either run nw-gwp manually or npm install to kick off the nodegit install.
