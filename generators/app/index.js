@@ -2,6 +2,7 @@
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 var yosay = require('yosay');
+var shell = require('shelljs');
 
 module.exports = yeoman.generators.Base.extend({
 
@@ -9,7 +10,6 @@ module.exports = yeoman.generators.Base.extend({
     this.npmInstall(['node-webkit-builder'], { 'saveDev': true });
     this.npmInstall(['gulp'], { 'saveDev': true });
     this.npmInstall(['gulp-util'], { 'saveDev': true });
-    this.npmInstall(['gulp-shell'], { 'saveDev': true });
     this.npmInstall(['bluebird'], { 'saveDev': false });
     this.npmInstall(['nodegit'], { 'saveDev': false });
 
@@ -89,17 +89,25 @@ module.exports = yeoman.generators.Base.extend({
         'node_modules/bluebird',
         this.destinationPath('nwapp/node_modules/bluebird')
       );
+
+      shell.exec("cd nwapp/node_modules/nodegit");
+      shell.exec("nw-gyp rebuild --target=0.12.2", function(){
+        shell.exec("npm install");
+      });
+
+      //todo - use move or delete to get rid of unnecessary dependencies
+      // this.fs.delete('node_modules/nodegit');
+      //delete or fs.move are causing overwrite warnings for some reason
+      //SBoudrias proposed solution does not work due to issues change directory
+      //context for node process
+      //https://github.com/yeoman/generator/issues/392
+      this.installDependencies(function(){
+        this.fs.delete('node_modules/nodegit');
+      });
     });
 
-    //todo - use move or delete to get rid of unnecessary dependencies
-    // this.fs.delete('node_modules/nodegit');
-    //delete or fs.move are causing overwrite warnings for some reason
-    //SBoudrias proposed solution does not work due to issues change directory
-    //context for node process
-    //https://github.com/yeoman/generator/issues/392
-    this.installDependencies(function(){
-      this.fs.delete('node_modules/nodegit');
-    });
+
+
 
 
   }
