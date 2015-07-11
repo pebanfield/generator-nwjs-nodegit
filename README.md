@@ -9,8 +9,15 @@ Despite all of the resources and elements involved the manual process is actuall
 The engines configuration and nw.js version has to be correctly included in the package json before installing nodegit. Alternatively, you can 
 correct the configuration and either run nw-gwp manually or npm install to kick off the nodegit install.
 
-This generator 
-Note : This has only been tested on Mac OS. 
+The key configuration settings to get right are here 
+
+[root package.json](https://github.com/pebanfield/generator-nwjs-nodegit/blob/master/generators/app/templates/_package.json#L12)
+
+and for later build here
+
+[build setting](https://github.com/pebanfield/generator-nwjs-nodegit/blob/master/generators/app/templates/Gulpfile.js#L8)
+
+Note : This version has to match the nw.js installation version. This has only been tested on Mac OS. 
 
 ### Pre-requisites
 
