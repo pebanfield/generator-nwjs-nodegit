@@ -23,7 +23,6 @@ After you have installed the tools above - Try these terminal commands first and
 npm install -g nw-gyp
 npm install -g generator-nwjs-nodegit
 mkdir myTest && cd myTest && yo nwjs-nodegit
-gulp
 alias nw="/Applications/nwjs.app/Contents/MacOS/nwjs"
 nw nwapp
 ```
@@ -53,7 +52,7 @@ All the information above was consolidated from the resources below.
 - [nw/gyp](https://github.com/nwjs/nw-gyp)
 - [Build with Gyp](https://github.com/nwjs/nw.js/wiki/Build-native-modules-with-nw-gyp)
 
-Also, the Yeoman template is based on [node-webkit-builder](https://github.com/mllrsohn/node-webkit-builder)
+Also, the Yeoman template includes a gulp build that includes [node-webkit-builder](https://github.com/mllrsohn/node-webkit-builder)
 
 ### Common Errors 
 
