@@ -2,7 +2,6 @@
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 var yosay = require('yosay');
-var shell = require('shelljs');
 
 module.exports = yeoman.generators.Base.extend({
 
@@ -90,10 +89,6 @@ module.exports = yeoman.generators.Base.extend({
         this.destinationPath('nwapp/node_modules/bluebird')
       );
 
-      shell.exec("cd nwapp/node_modules/nodegit");
-      shell.exec("nw-gyp rebuild --target=0.12.2", function(){
-        shell.exec("npm install");
-      });
 
       //todo - use move or delete to get rid of unnecessary dependencies
       // this.fs.delete('node_modules/nodegit');

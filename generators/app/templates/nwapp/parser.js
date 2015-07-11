@@ -26,7 +26,7 @@ function _getHistory(){
 
       // Listen for commit events from the history.
       history.on('commit', function(commit) {
-        console.log("commit")
+        console.log(commit.message());
       });
 
       history.on('end', function(commits){

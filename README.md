@@ -28,7 +28,7 @@ nw nwapp
 ```
 
 If this has worked correctly, you should see a webkit instance open. You should also see console.log output showing
-git history from the sample repo included in the generator template.
+git history comments from the sample repo included in the generator template.
 
 ### Conceptual Overview
 
@@ -36,9 +36,7 @@ This Yeoman project template is intended to facilitate setting up a [node-webkit
 build that includes the [nodegit](http://www.nodegit.org/) native library.
 
 The main difficulty arises from the fact that nodegit consists of node bindings to the native libgit2 component. This means that
-libgit2 must be compiled for the specific operating system and version of nw.js webkit being developed. This was not obvious to me
-intially since it is not usually necessary to perform this additional compilation step for node modules.
-
+libgit2 must be compiled for the specific operating system and version of nw.js webkit being developed. 
 
 
 ## Additional Resources
@@ -65,7 +63,15 @@ Stack:
 ```
 
 This error arises when you are trying to run a version of libgit2 that is not
-compiled for your OS and version of webkit. 
+compiled for your OS and version of webkit. When you npm install nodegit the install 
+script compiles the native component. If you have not specified the correct version up front 
+then will likely see the above error.
+
+This issue can be corrected after the fact by recompiling nodegit libgit2 with nw-gyp. For example, 
+
+```
+  nw-gyp rebuild --target=0.12.2
+```
 
 You can find more detail at [here](https://github.com/nodegit/nodegit#nwjs-node-webkit)
 
